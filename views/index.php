@@ -1,11 +1,12 @@
-<?php include __DIR__.'/index.php'; ?>
-
+<?php  ?>	
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 </head>
 <body>
+
+	<?php include __DIR__ . '/form.php'; ?>
 
 <form action="index.php" method="post">
 	<table>
@@ -18,7 +19,6 @@
 		</tr>
 	</table>
 
-	<?php include __DIR__ . '/form.php'; ?>
 
 </form>
 
