@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/sql.php';
+require_once __DIR__ . '/var_dump.php';
 
 Class image {
 	public $title;
@@ -41,7 +41,8 @@ Class image {
  	}
 }
 
-$image = new image(sql_connect());
+$image = new image();
 $image->sql_query('SELECT * FROM image');
+
 
 ?>
