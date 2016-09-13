@@ -3,8 +3,6 @@
 require_once __DIR__ . '/var_dump.php';
 
 Class image {
-	public $title;
-	public $sql;
  	
  	// Конструктор подключается к БД
  	public	function __construct() {
@@ -12,7 +10,7 @@ Class image {
  		mysql_select_db('gallery');	
  	}
 
- 	// Метод выполняет запрос к БД
+ 	// Создает массив данных таблицы $sql БД
  	public function sql_query($sql) {
  		$res = mysql_query($sql);
  		$ret = [];
@@ -24,25 +22,45 @@ Class image {
  		return $ret;
  	} 
 
- 	public function photo_getAll() {
+ 	// Обычный запрос к БД
+	public function sql_exec($sql)
+	{	
+		return mysql_query($sql);
+	}
+
+ 	// Получение всех фотографий из таблицы 
+ 	public function photo_getAll() 
+ 	{
+ 		$photo_image = 'SELECT * FROM image';
+ 		return $this->sql_query($photo_image);	
+ 	}
+
+ 	// Добавление фотографии в БД
+ 	public function photo_insert($name,$path)
+ 	{
+ 		$sql = "
+ 				INSERT INTO image
+ 				(title, path)
+ 				VALUES
+ 				('".$name."','".$path."')
+ 				";
  		
+ 		return $this->sql_exec($sql);
  	}
 
- 	public function photo_add() {
+ 	public function photo_update() 
+ 	{
 
  	}
 
- 	public function photo_update() {
-
- 	}
-
- 	public function photo_delete() {
+ 	public function photo_delete() 
+ 	{
 
  	}
 }
 
 $image = new image();
-$image->sql_query('SELECT * FROM image');
+$image->photo_insert('photo1','./img/123.jpg');
 
 
 ?>
