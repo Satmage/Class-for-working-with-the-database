@@ -28,7 +28,7 @@ Class image {
 		return mysql_query($sql);
 	}
 
- 	// Получение всех фотографий из таблицы 
+ 	// Получение всех фотографий из таблицы из БД
  	public function photo_getAll() 
  	{
  		$photo_image = 'SELECT * FROM image';
@@ -48,6 +48,7 @@ Class image {
  		return $this->sql_exec($sql);
  	}
 
+
  	public function photo_update() 
  	{
 
@@ -60,7 +61,7 @@ Class image {
 }
 
 $image = new image();
-$image->photo_insert('photo1','./img/123.jpg');
+
 
 
 ?>
