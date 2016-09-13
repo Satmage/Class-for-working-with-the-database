@@ -8,8 +8,20 @@ Class image {
  		
  	}
 
- 	public function view() {
- 	
+ 	public function Photo_getAll() {
+
+ 	}
+
+ 	public function add_photo() {
+
+ 	}
+
+ 	public function update_photo() {
+
+ 	}
+
+ 	public function delete_photo() {
+
  	}
 }
 
