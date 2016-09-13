@@ -8,7 +8,7 @@
 
 	<?php include __DIR__ . '/form.php'; ?>
 
-<form action="index.php" method="post">
+<form action="index.php" method="post" enctype=multipart/form-data>
 	<table>
 		<tr>
 			<th>Наименование</th>
