@@ -3,17 +3,20 @@ require_once __DIR__ . '/../var_dump.php';
 Class image {
  	
  	// Конструктор подключается к БД
- 	public	function __construct() {
+ 	public	function __construct() 
+ 	{
  		mysql_connect('localhost','root','');
  		mysql_select_db('gallery');	
  	}
 
  	// Создает массив данных таблицы $sql БД
- 	public function sql_query($sql) {
+ 	public function sql_query($sql) 
+ 	{
  		$res = mysql_query($sql);
  		$ret = [];
 
- 		while(false !== ($row = mysql_fetch_assoc($res))) {
+ 		while(false !== ($row = mysql_fetch_assoc($res))) 
+ 		{
  			$ret[] = $row;
  		}
 
@@ -26,6 +29,29 @@ Class image {
 		return mysql_query($sql);
 	}
 
+	// Загрузка файла
+	function file_upload($field)
+	{
+		if(empty($_FILES)) {
+			return false;
+		}
+		if (0 != $_FILES[$field]['error']) 
+		{
+			return false;
+		}
+		if (is_uploaded_file($_FILES[$field]['tmp_name'])) 
+		{
+			$res = move_uploaded_file($_FILES[$field]['tmp_name'], __DIR__ . '/../img/' . $_FILES[$field]['name']);
+			if(!$res) 
+			{
+				return false;
+			}
+			else {
+				return './img/' . $_FILES[$field]['name'];
+			}
+		}
+		return false;
+	}	
  	// Получение всех фотографий из таблицы из БД
  	public function photo_getAll() 
  	{
@@ -49,7 +75,7 @@ Class image {
 
  	public function photo_update() 
  	{
-
+ 		
  	}
 
  	public function photo_delete() 
